@@ -1,0 +1,392 @@
+:root {
+    --bg: #f5f5f7;
+    --surface: rgba(255, 255, 255, 0.84);
+    --text: #111111;
+    --text-soft: #5f5f66;
+    --line: rgba(17, 17, 17, 0.12);
+    --line-strong: rgba(17, 17, 17, 0.22);
+    --max-width: 1240px;
+    --shadow: 0 22px 60px rgba(0, 0, 0, 0.06);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    color: var(--text);
+    background:
+        radial-gradient(circle at top, rgba(0, 0, 0, 0.04), transparent 28%),
+        linear-gradient(180deg, #fbfbfc 0%, #f1f1f3 100%);
+    font-family: "Avenir Next", "PingFang SC", "Microsoft YaHei", sans-serif;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+main,
+.page-footer,
+.topbar {
+    width: min(var(--max-width), calc(100% - 40px));
+    margin: 0 auto;
+}
+
+.topbar {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+    padding: 18px 0;
+    background: linear-gradient(180deg, rgba(245, 245, 247, 0.92), rgba(245, 245, 247, 0.72));
+    backdrop-filter: blur(18px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.wordmark {
+    font-size: 0.86rem;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+}
+
+.main-nav {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+}
+
+.main-nav a {
+    position: relative;
+    font-size: 0.95rem;
+    color: var(--text-soft);
+    transition: color 0.24s ease;
+}
+
+.main-nav a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -8px;
+    width: 100%;
+    height: 1px;
+    background: var(--text);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.24s ease;
+}
+
+.main-nav a:hover,
+.main-nav a.is-active {
+    color: var(--text);
+}
+
+.main-nav a:hover::after,
+.main-nav a.is-active::after {
+    transform: scaleX(1);
+}
+
+.hero {
+    min-height: calc(100vh - 78px);
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(340px, 0.85fr);
+    gap: 56px;
+    align-items: center;
+    padding: 56px 0 92px;
+}
+
+.hero-copy h1,
+.section-content h2,
+.not-found-shell h1 {
+    margin: 0;
+    font-family: "Iowan Old Style", "Songti SC", "STSong", serif;
+    font-weight: 600;
+    letter-spacing: -0.03em;
+}
+
+.hero-copy h1 {
+    font-size: clamp(3.8rem, 10vw, 7.8rem);
+    line-height: 0.92;
+}
+
+.hero-role {
+    margin: 20px 0 0;
+    font-size: 1.45rem;
+    font-weight: 500;
+    letter-spacing: -0.03em;
+}
+
+.hero-tagline {
+    margin: 18px 0 0;
+    font-size: clamp(1.22rem, 2vw, 1.8rem);
+    color: var(--text-soft);
+    max-width: 30rem;
+    line-height: 1.45;
+}
+
+.hero-intro,
+.section-content p,
+.stream-item p,
+.contact-note,
+.footnote,
+.not-found-shell p {
+    color: var(--text-soft);
+    line-height: 1.9;
+    font-size: 1.02rem;
+}
+
+.hero-intro {
+    max-width: 36rem;
+    margin: 26px 0 0;
+}
+
+.kicker {
+    margin: 0 0 24px;
+    font-size: 0.8rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--text-soft);
+}
+
+.hero-actions {
+    display: flex;
+    gap: 22px;
+    margin-top: 30px;
+    flex-wrap: wrap;
+}
+
+.text-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    position: relative;
+    padding-bottom: 4px;
+    font-size: 1rem;
+    color: var(--text-soft);
+}
+
+.text-link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 1px;
+    background: var(--text);
+    transform: scaleX(0.3);
+    transform-origin: left;
+    transition: transform 0.24s ease;
+}
+
+.text-link:hover::after,
+.text-link.strong::after {
+    transform: scaleX(1);
+}
+
+.text-link.strong {
+    color: var(--text);
+    font-weight: 600;
+}
+
+.portrait-wrap {
+    width: min(100%, 480px);
+    margin-left: auto;
+    border: 1px solid var(--line);
+    background: var(--surface);
+    padding: 20px;
+    box-shadow: var(--shadow);
+}
+
+.portrait-wrap img {
+    aspect-ratio: 4 / 5;
+    width: 100%;
+    object-fit: cover;
+}
+
+.section-block {
+    display: grid;
+    grid-template-columns: 220px minmax(0, 1fr);
+    gap: 44px;
+    padding: 54px 0;
+    border-top: 1px solid var(--line);
+}
+
+.section-label {
+    font-size: 0.82rem;
+    color: var(--text-soft);
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    padding-top: 10px;
+}
+
+.section-content h2 {
+    font-size: clamp(2rem, 5vw, 4rem);
+    line-height: 1.08;
+    max-width: 16ch;
+}
+
+.lead {
+    margin-top: 26px;
+    max-width: 48rem;
+}
+
+.list-stream {
+    margin-top: 20px;
+}
+
+.stream-item {
+    display: grid;
+    grid-template-columns: 170px minmax(0, 1fr);
+    gap: 22px;
+    padding: 24px 0;
+    border-top: 1px solid var(--line);
+}
+
+.stream-item:first-child {
+    margin-top: 12px;
+}
+
+.stream-meta {
+    font-size: 0.9rem;
+    color: var(--text-soft);
+    letter-spacing: 0.08em;
+}
+
+.stream-item h3 {
+    margin: 0 0 10px;
+    font-size: 1.22rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+}
+
+.stream-item p {
+    margin: 0;
+    max-width: 46rem;
+}
+
+.skill-lines {
+    margin-top: 28px;
+    border-top: 1px solid var(--line);
+}
+
+.skill-lines p {
+    margin: 0;
+    padding: 18px 0;
+    border-bottom: 1px solid var(--line);
+    color: var(--text);
+    font-size: clamp(1.1rem, 2vw, 1.45rem);
+    letter-spacing: -0.02em;
+}
+
+.footnote {
+    margin-top: 22px;
+}
+
+.section-contact {
+    padding-bottom: 96px;
+}
+
+.phone-link {
+    display: inline-block;
+    margin-top: 28px;
+    font-family: "Iowan Old Style", "Songti SC", "STSong", serif;
+    font-size: clamp(2.1rem, 6vw, 4.4rem);
+    letter-spacing: -0.04em;
+}
+
+.contact-note {
+    max-width: 34rem;
+    margin-top: 16px;
+}
+
+.page-footer {
+    padding: 0 0 38px;
+    color: var(--text-soft);
+    font-size: 0.9rem;
+}
+
+.reveal {
+    opacity: 0;
+    transform: translateY(26px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.not-found-page {
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+}
+
+.not-found-shell {
+    width: min(820px, calc(100% - 40px));
+    padding: 40px 0;
+}
+
+.not-found-shell h1 {
+    font-size: clamp(2.4rem, 7vw, 5rem);
+    letter-spacing: -0.04em;
+}
+
+@media (max-width: 1024px) {
+    .hero,
+    .section-block,
+    .stream-item {
+        grid-template-columns: 1fr;
+    }
+
+    .portrait-wrap {
+        margin-left: 0;
+    }
+
+    .section-label {
+        padding-top: 0;
+    }
+}
+
+@media (max-width: 780px) {
+    .topbar {
+        padding: 16px 0;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .main-nav {
+        gap: 16px;
+    }
+
+    .hero {
+        gap: 32px;
+        padding-top: 32px;
+        min-height: auto;
+    }
+
+    .section-block {
+        gap: 20px;
+        padding: 40px 0;
+    }
+
+    main,
+    .page-footer,
+    .topbar,
+    .not-found-shell {
+        width: min(var(--max-width), calc(100% - 24px));
+    }
+}
